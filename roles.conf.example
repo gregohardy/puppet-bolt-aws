@@ -1,5 +1,5 @@
 [
-  {"pe_master": 1},
-  {"webserver": 3},
-  {"mysql_servers": 2}
+  {"role":"pe_master","num_create": 1, "image_id": "ami-0ff760d16d9497662", "instance_type": "t2.large"},
+  {"role":"webserver", "num_create": 3},
+  {"role":"mysql_servers", "num_create": 2}
 ]

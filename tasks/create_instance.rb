@@ -60,40 +60,32 @@ sg_id = ENV['PT_sg_id']
 inventory_file = ENV['PT_inventory']
 roles = ENV['PT_roles']
 
-# instance_name = "greghardy-bolt"
-# subnet_id = "subnet-0a90e26b60eab644c"
-# sg_id = "sg-0c48bb4a3d34a02ea"
-# inventory_file = "/Users/greghardy" 
-# roles = "[{\"pe_master\":1},{\"webserver\":3},{\"mysql_servers\":2}]"
-
 ec2 = Aws::EC2::Resource.new(region: ENV['AWS_REGION'])
 names_and_roles = JSON.parse(roles)
 output = []
 names_and_roles.each do |node|
-  node.select do |node_type, num_create|
-    num_create.times do |n|
-      instance = ec2.create_instances({
-        image_id: 'ami-0ff760d16d9497662',
-        min_count: 1,
-        max_count: 1,
-        key_name: ENV['AWS_KEY_NAME'],
-        instance_type: 't2.medium',
-        network_interfaces: [{device_index: 0,
-          subnet_id: subnet_id,
-          groups: [sg_id],
-          delete_on_termination: true,
-          associate_public_ip_address: true}]
-      })
+  node['num_create'].times do |n|
+    instance = ec2.create_instances({
+      image_id: node['image_id'] || 'ami-0ff760d16d9497662',
+      min_count: 1,
+      max_count: 1,
+      key_name: ENV['AWS_KEY_NAME'],
+      instance_type: node['instance_type'] || 't2.medium',
+      network_interfaces: [{device_index: 0,
+        subnet_id: subnet_id,
+        groups: [sg_id],
+        delete_on_termination: true,
+        associate_public_ip_address: true}]
+    })
 
-      # Wait for the instance to be created, running, and passed status checks
-      ec2.client.wait_until(:instance_running, {instance_ids: [instance.first.id]})
+    # Wait for the instance to be created, running, and passed status checks
+    ec2.client.wait_until(:instance_running, {instance_ids: [instance.first.id]})
 
-      instance.batch_create_tags({ tags: [{ key: 'Name', value: "#{instance_name}" },{ key: 'role', value: "#{node_type}" },{ key: 'num', value: "#{n+1}" }, { key: 'lifetime', value: '10d' }]})
-      
-      i = ec2.instance(instance.first.id)
-      provision(i.public_dns_name, 'aws', inventory_file, nil)
-      output.push(i.public_dns_name)
-    end
+    instance.batch_create_tags({ tags: [{ key: 'Name', value: "#{instance_name}" },{ key: 'role', value: "#{node['role']}" },{ key: 'num', value: "#{n+1}" }, { key: 'lifetime', value: '10d' }]})
+    
+    i = ec2.instance(instance.first.id)
+    provision(i.public_dns_name, 'aws', inventory_file, nil)
+    output.push(i.public_dns_name)
   end
 end
 print output
