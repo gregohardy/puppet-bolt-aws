@@ -8,10 +8,12 @@ and route table for you. Any instances that are create will be affiliated with t
 
 You will need to export your AWS credentials, region and private key file:
 
+```bash
 export AWS_ACCESS_KEY_ID = 'xxxxxxx'
 export AWS_SECRET_ACCESS_KEY = 'yyyyyyy'
 export AWS_REGION = 'eu-west-1'
 export AWS_PRIVATE_KEY=~/.ssh/<your pem file>.pem
+```
 
 ## Setup
 
