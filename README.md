@@ -53,6 +53,10 @@ There are a few ways to configure the number of instances that you require. Inst
 that you specify in the role schema. The roles.conf.example file illustrates how its possible to configure a conf file 
 to pass to the provision plan.
 
+Manditory params : role, num_create
+Optional params  : image_id, instance_type
+Defaults         : "ami-0ff760d16d9497662", "t2.large"
+
 ```bash
 $ cat roles.conf.example
 [
