@@ -1,0 +1,7 @@
+{
+	"description": "This task gets value of a give key from ENV",
+	"input_method": "environment",
+	"parameters": {
+		"param": { "type": "String[1]" }
+		}
+}

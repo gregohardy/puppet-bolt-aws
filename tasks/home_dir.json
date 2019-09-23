@@ -1,0 +1,5 @@
+{
+	"description": "This task returns facts from a puppet node",
+	"input_method": "environment"
+	
+}

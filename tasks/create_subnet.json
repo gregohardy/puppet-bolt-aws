@@ -1,0 +1,8 @@
+{
+	"description": "This task creates an AWS subnet",
+	"input_method": "environment",
+	"parameters": {
+		"tag_name": { "type": "String[1]" },
+		"vpc_id": { "type": "String[1]" }
+		}
+}

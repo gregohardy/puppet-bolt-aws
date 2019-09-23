@@ -1,0 +1,11 @@
+{
+	"description": "This task creates an AWS instance",
+	"input_method": "environment",
+	"parameters": {
+		"instance_name": { "type": "String[1]" },
+		"subnet_id": { "type": "String[1]" },
+		"sg_id": { "type": "String[1]" },
+		"inventory": { "type": "String[1]" },
+		"roles": { "type": "String[1]"}
+		}
+}

@@ -1,0 +1,8 @@
+{
+	"description": "This task creates an delete's all aws EC2 and VPC resources for a given tag",
+	"input_method": "environment",
+	"parameters": {
+		"tag_name": { "type": "String[1]" },
+		"inventory": { "type": "String[1]" }
+		}
+}

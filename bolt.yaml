@@ -1,0 +1,6 @@
+modulepath: "~/.puppetlabs/bolt-code/modules:~/.puppetlabs/bolt-code/site-modules:~/.puppetlabs/etc/code/modules:../"
+concurrency: 10
+format: human
+ssh:
+  host-key-check: false
+

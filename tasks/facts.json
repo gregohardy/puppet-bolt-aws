@@ -1,0 +1,7 @@
+{
+	"description": "This task returns facts from a puppet node",
+	"input_method": "environment",
+	"parameters": {
+		"fact_name": { "type": "String[1]" }
+		}
+}

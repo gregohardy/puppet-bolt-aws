@@ -1,0 +1,5 @@
+[
+  {"pe_master": 1},
+  {"webserver": 3},
+  {"mysql_servers": 2}
+]

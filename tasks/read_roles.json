@@ -1,0 +1,7 @@
+{
+	"description": "Read in the roles json struct from file",
+	"input_method": "environment",
+	"parameters":{
+		"file": { "type": "String[1]" }
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"description": "This task creates an AWS security group",
+	"input_method": "environment",
+	"parameters": {
+		"group_name": { "type": "String[1]" },
+		"vpc_id": { "type": "String[1]" }
+		}
+}

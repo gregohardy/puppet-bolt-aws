@@ -1,0 +1,10 @@
+{
+	"description": "This task creates an AWS Internet Gateway",
+	"input_method": "environment",
+	"parameters": {
+		"tag_name": { "type": "String[1]" },
+		"vpc_id": { "type": "String[1]" },
+		"subnet_id": { "type": "String[1]" },
+		"ig_id": { "type": "String[1]" }
+		}
+}
